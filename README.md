@@ -4,17 +4,17 @@
 (ESP32 / ESP32-C3 / ESP32-S3 / ESP32-S2 / ESP8266) на «только водопад»: вода переливается по
 наклону, при встряхивании — брызги. Сохраняет и возвращает родную прошивку.
 
-**Скачать:** [последняя версия](https://github.com/sergtroian-tech/vodopad/releases/latest/download/Vodopad.exe)
+**Скачать:** [Vodopad.exe](https://raw.githubusercontent.com/sergtroian-tech/vodopad/main/release/Vodopad.exe)
 
-Программа обновляется сама: при запуске читает `version.txt` из последнего релиза и,
-если версия новее, скачивает `Vodopad.exe`, подменяет себя и перезапускается.
+Программа обновляется сама: при запуске читает `release/version.txt` из ветки main и,
+если версия новее, скачивает `release/Vodopad.exe`, подменяет себя и перезапускается.
 
 ## Как выпустить обновление
 1. Поднять `AssemblyVersion` в `app/Program.cs` (например 1.2.0.0).
 2. Если менялась прошивка — поднять `FW_VERSION` в `firmware/Vodopad/Vodopad.ino`
    и `PanelFwVersion` в `app/MainForm.cs`, затем `firmware/build_all.sh`.
 3. Собрать `app/build.sh` (mono `mcs`; встраивает esptool.exe v4.8.1 win64 и прошивки).
-4. Создать релиз `v1.2` с двумя файлами: `Vodopad.exe` и `version.txt` (внутри `1.2`).
+4. Положить новый `Vodopad.exe` в `release/`, в `release/version.txt` записать `1.2`, закоммитить и запушить в main.
 
 ## Устройство
 - `firmware/Vodopad` — прошивка (Arduino-ESP32 2.0.17 / ESP8266 3.1.2, Adafruit NeoPixel).

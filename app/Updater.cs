@@ -19,7 +19,7 @@ namespace Vodopad
         static string Url(string file)
         {
             string test = Environment.GetEnvironmentVariable("VODOPAD_UPDATE_URL");   // только для проверки
-            return (string.IsNullOrEmpty(test) ? "https://github.com/" + Repo + "/releases/latest/download/" : test) + file;
+            return (string.IsNullOrEmpty(test) ? "https://raw.githubusercontent.com/" + Repo + "/main/release/" : test) + file;
         }
 
         static void Tls() { try { ServicePointManager.SecurityProtocol |= (SecurityProtocolType)3072; } catch { } }
